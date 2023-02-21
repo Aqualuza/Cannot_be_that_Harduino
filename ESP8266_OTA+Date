@@ -1,17 +1,16 @@
-#include <AsyncPrinter.h>
-#include <async_config.h>
-#include <DebugPrintMacros.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncTCPbuffer.h>
-
-
-#include <SyncClient.h>
-#include <tcp_axtls.h>
-
-
 /*
+  This is a dummy for Over The Air (OTA) firmware update, as well as importing time and date from the web. This being said, you will need an internet connection for it  to work properly (duh).
+  
+  In the end, all this does is blink an LED, and tell the time every like 10 seconds or so, so it's pretty useless.
+  
+  It is still a work in progress, and is based on a crap-ton of different sources, but mainly from Rui Santos, the guy behind the https://randomnerdtutorials.com/ website. You can find links there for his stuff as well (Great website btw)
+  
+  
+  
   Rui Santos
+  Complete project details at https://randomnerdtutorials.com/esp8266-ota-updates-with-arduino-ide-over-the-air/
   Complete project details at https://RandomNerdTutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+
  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files.
@@ -19,6 +18,15 @@
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
 */
+
+#include <AsyncPrinter.h>
+#include <async_config.h>
+#include <DebugPrintMacros.h>
+#include <ESPAsyncTCP.h>
+#include <ESPAsyncTCPbuffer.h>
+
+#include <SyncClient.h>
+#include <tcp_axtls.h>
 
 #include <ESP8266WiFi.h>
 #include <NTPClient.h>
@@ -167,9 +175,9 @@ void loop() {
   delay(2000);
 
   digitalWrite(2, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(2500);                       // wait for a second
+  delay(2500);                       // wait for 2.5 seconds
   digitalWrite(2, LOW);    // turn the LED off by making the voltage LOW
-  delay(50);
+  delay(50);                         // wait for 0.05 seconds
   digitalWrite(2, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(2500);                       // wait for a second
+  delay(2500);                       // wait for 2.5 seconds
 }
